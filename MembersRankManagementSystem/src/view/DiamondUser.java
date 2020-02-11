@@ -5,8 +5,7 @@ import java.util.Scanner;
 import presenter.ManagementSystem;
 
 //ダイヤモンドランククラス
-public class DiamondUser extends MypageView implements ISearch,
-IPerchace, ISelling, IChat, IPlayingGame{
+public class DiamondUser extends MypageView{
 	//フィールド
 	private Scanner scanner = new Scanner(System.in);
 
@@ -26,39 +25,9 @@ IPerchace, ISelling, IChat, IPlayingGame{
 		System.out.println("4 : チャットして遊ぶ");
 		System.out.println("5 : ゲームをして遊ぶ");
 
+		System.out.println("番号をお選びください。");
 		ManagementSystem.selection = scanner.nextInt();
 
 	}
-
-	@Override
-	public String playingGame() {
-		// TODO 自動生成されたメソッド・スタブ
-		return "ゲームをお選びください。。";
-	}
-
-	@Override
-	public String chat() {
-		// TODO 自動生成されたメソッド・スタブ
-		return "チャットする相手をお選びください。";
-	}
-
-	@Override
-	public String selling() {
-		// TODO 自動生成されたメソッド・スタブ
-		return "お売りになる商品を登録してください。";
-	}
-
-	@Override
-	public String perchace() {
-		// TODO 自動生成されたメソッド・スタブ
-		return "購入する商品をお選びください。";
-	}
-
-	@Override
-	public String search() {
-		// TODO 自動生成されたメソッド・スタブ
-		return "お探しの商品は何ですか？";
-	}
-
 
 }
