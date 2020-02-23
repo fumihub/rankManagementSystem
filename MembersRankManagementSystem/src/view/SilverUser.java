@@ -10,13 +10,13 @@ public class SilverUser extends MypageView{
 	private Scanner scanner = new Scanner(System.in);
 
 	//コンストラクタ
-	public SilverUser(String rank){
-		super(rank);
+	public SilverUser(){
+		super(1, "Silver");
 	}
 
 	public void excute(){
 		//ランクの表示
-		System.out.println("RANK : " + super.getName());
+		System.out.println("RANK : " + super.getName(1));
 		System.out.println("");
 		System.out.println("0 : ログアウトする");
 		System.out.println("1 : 商品を探す");

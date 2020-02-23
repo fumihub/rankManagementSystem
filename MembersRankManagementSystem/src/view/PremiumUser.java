@@ -10,13 +10,13 @@ public class PremiumUser extends MypageView{
 	private Scanner scanner = new Scanner(System.in);
 
 	//コンストラクタ
-	public PremiumUser(String rank){
-		super(rank);
+	public PremiumUser(){
+		super(3, "Premium");
 	}
 
 	public void excute(){
 		//ランクの表示
-		System.out.println("RANK : " + super.getName());
+		System.out.println("RANK : " + super.getName(3));
 		System.out.println("");
 		System.out.println("0 : ログアウトする");
 		System.out.println("1 : 商品を探す");

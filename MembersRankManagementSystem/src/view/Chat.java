@@ -10,13 +10,13 @@ public class Chat extends FunctionView{
 
 	//コンストラクタ
 	public Chat(){
-		super("チャット");
+		super(4, "チャット");
 	}
 
 	@Override
 	//画面表示
 	public void excute() {
-		System.out.println(super.getName() + "画面です。");
+		System.out.println(super.getName(4) + "画面です。");
 
 		System.out.println("");
 		System.out.println("0 : ログアウトする");

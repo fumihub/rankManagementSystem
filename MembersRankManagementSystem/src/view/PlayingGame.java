@@ -10,13 +10,13 @@ public class PlayingGame extends FunctionView{
 
 	//コンストラクタ
 	public PlayingGame(){
-		super("ゲームの選択");
+		super(5, "ゲームの選択");
 	}
 
 	@Override
 	//画面表示
 	public void excute() {
-		System.out.println(super.getName() + "画面です。");
+		System.out.println(super.getName(5) + "画面です。");
 
 		System.out.println("");
 		System.out.println("0 : ログアウトする");

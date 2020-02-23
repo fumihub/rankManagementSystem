@@ -10,13 +10,13 @@ public class Purchase extends FunctionView{
 
 	//コンストラクタ
 	public Purchase(){
-		super("商品の購入");
+		super(2, "商品の購入");
 	}
 
 	@Override
 	//画面表示
 	public void excute() {
-		System.out.println(super.getName() + "画面です。");
+		System.out.println(super.getName(2) + "画面です。");
 
 		System.out.println("");
 		System.out.println("0 : ログアウトする");

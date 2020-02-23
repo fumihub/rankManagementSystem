@@ -10,13 +10,13 @@ public class Search extends FunctionView{
 
 	//コンストラクタ
 	public Search(){
-		super("商品の検索");
+		super(1, "商品の検索");
 	}
 
 	@Override
 	//画面表示
 	public void excute() {
-		System.out.println(super.getName() + "画面です。");
+		System.out.println(super.getName(1) + "画面です。");
 
 		System.out.println("");
 		System.out.println("0 : ログアウトする");
