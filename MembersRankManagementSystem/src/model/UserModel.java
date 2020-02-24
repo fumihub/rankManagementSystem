@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import presenter.ManagementSystem;
+
 //TODO 登録日時のDB登録
 public class UserModel {
 
@@ -32,7 +34,7 @@ public class UserModel {
 	 */
 	public boolean authMember(String id, String pass) {
 		try {
-			if(checkAuth(id, pass).next()== false) {
+			if(checkAuth(id, pass).next() == false) {
 				return false;
 			}
 		} catch (SQLException e) {
@@ -43,44 +45,43 @@ public class UserModel {
 
 	}
 	/**
-	 * DBに問い合わせ、CLASSカラムの文字列を返す。
+	 * DBに問い合わせ、rankを取得する。
 	 * @param id
 	 * @param pass
 	 * @return Data
 	 * @throws SQLException
 	 */
-	public String getUserClass(String id, String pass) {
+	public void getUserClass(String id, String pass) {
 		//DBからデータオブジェクトを受け取る。
 		ResultSet resultData = getUserClassData(id, pass);
-		String Data = "";
 		//次のデータがなければ
 		try {
 			while (resultData.next()) {
-				Data = resultData.getString("CLASS");
+				ManagementSystem.rank = resultData.getString("rank");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return Data;
 
 	}
 
 	private ResultSet checkAuth(String id, String pass) {
+		//sql文 = selec * from account(テーブル名) where id(カラム名) and pass(カラム名);
 		String sql = "SELECT "
 				+ "*"
 				+ " FROM "
 				+ "account "
 				+ "WHERE "
-				+ "ID = '" + id
+				+ "id = '" + id
 				+ "' AND "
-				+ "Pass = '" + pass
+				+ "pass = '" + pass
 				+ "';";
 		try {
 			ResultSet result = dbstatement.executeQuery(sql);//ResultSet型を返す
-			System.out.println("クラスデータ取得成功");
+			//System.out.println("クラスデータ取得成功");
 			return result;
 		} catch (SQLException e) {
-			System.out.println("クラスデータ取得失敗");
+			//System.out.println("クラスデータ取得失敗");
 			e.printStackTrace();
 			return null;
 		}
@@ -95,21 +96,22 @@ public class UserModel {
 	 */
 	private ResultSet getUserClassData(String id, String pass) {
 		//statementインターフェースを利用してDB操作をする
+		//sql文 = selec rank(カラム名) from account(テーブル名) where id(カラム名) and pass(カラム名);
 		String sql = "SELECT "
-				+ "CLASS "
+				+ "rank "
 				+ " FROM "
 				+ "account "
 				+ "WHERE "
-				+ "ID = '" + id
+				+ "id = '" + id
 				+ "' AND "
-				+ "Pass = '" + pass
+				+ "pass = '" + pass
 				+ "';";
 		try {
 			ResultSet result = dbstatement.executeQuery(sql);//ResultSet型を返す
-			System.out.println("クラスデータ取得成功");
+			//System.out.println("クラスデータ取得成功");
 			return result;
 		} catch (SQLException e) {
-			System.out.println("クラスデータ取得失敗");
+			//System.out.println("クラスデータ取得失敗");
 			e.printStackTrace();
 			return null;
 		}

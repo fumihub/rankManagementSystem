@@ -1,8 +1,7 @@
 package presenter;
-
+import java.io.IOException;
 import java.util.HashMap;
 
-import model.JavaConnection;
 import view.Chat;
 import view.DiamondUser;
 import view.FunctionView;
@@ -18,8 +17,6 @@ import view.Selling;
 import view.SilverUser;
 
 public class ManagementSystem {
-	//DBとの接続
-	private JavaConnection db = JavaConnection.getInstance();
 	//ログイン情報を取得
 	private static LoginPresenter lp = LoginPresenter.getInstance();
 	//UserModelクラスでランクを格納
@@ -49,11 +46,28 @@ public class ManagementSystem {
 		fv[5] = new PlayingGame();
 
 		while (true) {
+			//クリアスクリーン
+			clrscr();
+
 			//ログイン処理
 			lp.login();
+
+			//クリアスクリーン
+			clrscr();
+
 			//各ランクマイページ表示
 			map.get(rank).excute();
+
+			//クリアスクリーン
+			clrscr();
+
 			//各機能ページ表示
+			fv[selection].excute();
+
+			//クリアスクリーン
+			clrscr();
+
+			//ログアウト画面の表示
 			fv[selection].excute();
 
 			//ログイン画面に戻る
@@ -62,8 +76,20 @@ public class ManagementSystem {
 			}
 			//システムを終了する
 			else if (selection == 7) {
-				break;
+				System.exit(0);
 			}
 		}
 	}
+
+	public static void clrscr(){
+		//Clears Screen in java
+		try {
+		    if (System.getProperty("os.name").contains("Windows")) {
+		        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+		    }
+		    else {
+		        Runtime.getRuntime().exec("clear");
+		    }
+		} catch (IOException | InterruptedException ex) {}
+		}
 }
